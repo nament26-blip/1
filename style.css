@@ -1,0 +1,1090 @@
+/* =========================================================
+   РАВОНШИНОС — основной файл стилей
+   Мобильный дизайн разрабатывается первым (mobile-first),
+   затем расширяется под планшеты и десктопы через @media.
+   ========================================================= */
+
+/* ---------- 1. ПЕРЕМЕННЫЕ (палитра, отступы, шрифты) ---------- */
+:root {
+  /* Цветовая палитра: мягкий синий, шалфейный зелёный, бежевый, белый */
+  --color-blue: #7E9CAA;         /* мягкий синий — основной акцент */
+  --color-blue-dark: #5F7F8E;    /* тёмный синий — hover/акценты */
+  --color-blue-light: #E7EEF1;   /* очень светлый синий — фоны блоков */
+  --color-sage: #9CAE8C;         /* шалфейный зелёный — второй акцент */
+  --color-sage-dark: #7E9470;
+  --color-sage-light: #EAEFE4;
+  --color-cream: #F7F2E9;        /* бежевый — фон страницы */
+  --color-white: #FFFFFF;
+  --color-gray: #6B7280;         /* мягкий серый — текст */
+  --color-gray-light: #E4E1DA;   /* серый — границы */
+  --color-text: #3A3A3A;         /* основной текст */
+  --color-text-soft: #6E6A63;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+
+  --shadow-sm: 0 2px 8px rgba(60, 55, 45, 0.06);
+  --shadow-md: 0 6px 20px rgba(60, 55, 45, 0.10);
+  --shadow-lg: 0 12px 32px rgba(60, 55, 45, 0.14);
+
+  --container-width: 1180px;
+  --gap: 20px;
+
+  --font-main: "Georgia", "Times New Roman", serif;
+  --font-ui: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* ---------- 2. СБРОС СТИЛЕЙ ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-ui);
+  color: var(--color-text);
+  background: var(--color-cream);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-main);
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--color-text);
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 18px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+/* ---------- 3. КНОПКИ ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 26px;
+  border-radius: var(--radius-md);
+  font-size: 15px;
+  font-weight: 600;
+  font-family: var(--font-ui);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  white-space: nowrap;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-primary {
+  background: var(--color-blue);
+  color: var(--color-white);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:hover {
+  background: var(--color-blue-dark);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-secondary {
+  background: var(--color-white);
+  color: var(--color-blue-dark);
+  border: 1.5px solid var(--color-blue);
+}
+
+.btn-secondary:hover {
+  background: var(--color-blue-light);
+}
+
+.btn-sage {
+  background: var(--color-sage);
+  color: var(--color-white);
+}
+
+.btn-sage:hover {
+  background: var(--color-sage-dark);
+}
+
+.btn-block {
+  width: 100%;
+}
+
+.btn-sm {
+  padding: 9px 16px;
+  font-size: 13.5px;
+  border-radius: var(--radius-sm);
+}
+
+/* ---------- 4. ШАПКА / НАВИГАЦИЯ ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(247, 242, 233, 0.92);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--color-gray-light);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-main);
+  font-size: 21px;
+  font-weight: 700;
+  color: var(--color-blue-dark);
+}
+
+.logo-mark {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--color-blue);
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-main);
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.main-nav a {
+  font-size: 15px;
+  color: var(--color-text);
+  font-weight: 500;
+  transition: color 0.15s ease;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+  color: var(--color-blue-dark);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 30px;
+  height: 30px;
+  z-index: 110;
+}
+
+.nav-toggle span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: var(--color-text);
+  border-radius: 2px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+/* Мобильное меню: по умолчанию скрыто, десктоп-меню видно с 900px */
+@media (max-width: 899px) {
+  .main-nav {
+    position: fixed;
+    inset: 64px 12px auto 12px;
+    background: var(--color-white);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 18px 20px;
+    gap: 16px;
+    transform: translateY(-12px);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .main-nav.is-open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .nav-actions .btn-secondary {
+    display: none;
+  }
+}
+
+@media (min-width: 900px) {
+  .nav-toggle {
+    display: none;
+  }
+}
+
+.nav-toggle.is-active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.nav-toggle.is-active span:nth-child(2) {
+  opacity: 0;
+}
+.nav-toggle.is-active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ---------- 5. HERO ---------- */
+.hero {
+  padding: 52px 0 44px;
+  background: linear-gradient(180deg, var(--color-blue-light) 0%, var(--color-cream) 100%);
+}
+
+.hero-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: clamp(28px, 6vw, 46px);
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.hero h1 .accent {
+  color: var(--color-blue-dark);
+}
+
+.hero-subtitle {
+  font-size: 17px;
+  color: var(--color-text-soft);
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+}
+
+@media (min-width: 700px) {
+  .hero h1 {
+    font-size: clamp(34px, 5vw, 50px);
+  }
+}
+
+/* ---------- 6. ПОИСК И ФИЛЬТРЫ ---------- */
+.search-panel {
+  margin-top: 34px;
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.search-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+@media (min-width: 720px) {
+  .search-row {
+    grid-template-columns: 1.4fr 1fr 1fr auto;
+    align-items: end;
+  }
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: left;
+}
+
+.field label {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--color-text-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.field input[type="text"],
+.field select {
+  padding: 11px 12px;
+  border: 1.5px solid var(--color-gray-light);
+  border-radius: var(--radius-sm);
+  font-size: 14.5px;
+  background: var(--color-white);
+  color: var(--color-text);
+  width: 100%;
+}
+
+.field input:focus,
+.field select:focus {
+  outline: none;
+  border-color: var(--color-blue);
+}
+
+.range-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.range-value {
+  font-size: 13px;
+  color: var(--color-blue-dark);
+  font-weight: 600;
+}
+
+input[type="range"] {
+  width: 100%;
+  accent-color: var(--color-blue);
+}
+
+/* ---------- 7. "КАК ЭТО РАБОТАЕТ" ---------- */
+.section {
+  padding: 56px 0;
+}
+
+.section-title {
+  text-align: center;
+  font-size: clamp(24px, 4vw, 32px);
+  margin-bottom: 10px;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: var(--color-text-soft);
+  max-width: 560px;
+  margin: 0 auto 36px;
+  font-size: 15.5px;
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+@media (min-width: 760px) {
+  .steps-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.step-card {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  padding: 28px 22px;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.step-number {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--color-sage-light);
+  color: var(--color-sage-dark);
+  font-family: var(--font-main);
+  font-weight: 700;
+  font-size: 19px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+}
+
+.step-card h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.step-card p {
+  color: var(--color-text-soft);
+  font-size: 14.5px;
+}
+
+/* ---------- 8. КАРТОЧКИ ПСИХОЛОГОВ ---------- */
+.cards-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 22px;
+}
+
+@media (min-width: 620px) {
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 980px) {
+  .cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.psych-card {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.psych-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.psych-card-top {
+  padding: 22px 22px 0;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+/* CSS-аватар с инициалами — МОЖНО ЗАМЕНИТЬ НА <img class="avatar-photo"> */
+.avatar {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-white);
+  font-family: var(--font-main);
+  font-weight: 700;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.avatar-photo {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.avatar-lg {
+  width: 128px;
+  height: 128px;
+  font-size: 40px;
+}
+
+.psych-card-name {
+  font-size: 17px;
+  font-weight: 700;
+  font-family: var(--font-main);
+  margin-bottom: 3px;
+}
+
+.psych-card-spec {
+  font-size: 13.5px;
+  color: var(--color-blue-dark);
+  font-weight: 600;
+}
+
+.psych-card-meta {
+  padding: 14px 22px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 12.5px;
+  color: var(--color-text-soft);
+}
+
+.tag {
+  background: var(--color-sage-light);
+  color: var(--color-sage-dark);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+.tag-blue {
+  background: var(--color-blue-light);
+  color: var(--color-blue-dark);
+}
+
+.psych-card-rating {
+  padding: 14px 22px 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+}
+
+.stars {
+  color: #D8A94E;
+  letter-spacing: 1px;
+}
+
+.rating-count {
+  color: var(--color-text-soft);
+  font-size: 12.5px;
+}
+
+.psych-card-bottom {
+  margin-top: auto;
+  padding: 18px 22px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.price-tag {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.price-tag span {
+  font-size: 12.5px;
+  color: var(--color-text-soft);
+  font-weight: 500;
+  display: block;
+}
+
+/* ---------- 9. ОТЗЫВЫ ---------- */
+.reviews-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+@media (min-width: 760px) {
+  .reviews-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.review-card {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+}
+
+.review-stars {
+  margin-bottom: 10px;
+}
+
+.review-text {
+  font-size: 14.5px;
+  color: var(--color-text-soft);
+  margin-bottom: 16px;
+}
+
+.review-author {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13.5px;
+  font-weight: 600;
+}
+
+/* ---------- 10. CTA ДЛЯ ПСИХОЛОГОВ ---------- */
+.cta-block {
+  background: var(--color-blue);
+  border-radius: var(--radius-lg);
+  padding: 40px 26px;
+  text-align: center;
+  color: var(--color-white);
+}
+
+.cta-block h2 {
+  color: var(--color-white);
+  font-size: clamp(22px, 4vw, 30px);
+  margin-bottom: 12px;
+}
+
+.cta-block p {
+  max-width: 520px;
+  margin: 0 auto 22px;
+  opacity: 0.92;
+  font-size: 15px;
+}
+
+.cta-block .btn-primary {
+  background: var(--color-white);
+  color: var(--color-blue-dark);
+}
+
+.cta-block .btn-primary:hover {
+  background: var(--color-cream);
+}
+
+/* ---------- 11. ФУТЕР ---------- */
+.site-footer {
+  background: #EFE9DC;
+  padding: 44px 0 26px;
+  border-top: 1px solid var(--color-gray-light);
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+  margin-bottom: 28px;
+}
+
+@media (min-width: 720px) {
+  .footer-top {
+    grid-template-columns: 1.4fr 1fr 1fr;
+  }
+}
+
+.footer-about p {
+  color: var(--color-text-soft);
+  font-size: 14px;
+  margin-top: 10px;
+  max-width: 320px;
+}
+
+.footer-col h4 {
+  font-size: 14.5px;
+  margin-bottom: 12px;
+}
+
+.footer-col ul li {
+  margin-bottom: 8px;
+}
+
+.footer-col a {
+  font-size: 14px;
+  color: var(--color-text-soft);
+}
+
+.footer-col a:hover {
+  color: var(--color-blue-dark);
+}
+
+.footer-bottom {
+  border-top: 1px solid var(--color-gray-light);
+  padding-top: 18px;
+  font-size: 13px;
+  color: var(--color-text-soft);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+/* ---------- 12. СТРАНИЦА КАТАЛОГА ---------- */
+.page-header {
+  padding: 32px 0 8px;
+  text-align: center;
+}
+
+.page-header h1 {
+  font-size: clamp(26px, 4vw, 36px);
+}
+
+.page-header p {
+  color: var(--color-text-soft);
+  margin-top: 8px;
+}
+
+.catalog-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 26px;
+  padding: 30px 0 60px;
+}
+
+@media (min-width: 940px) {
+  .catalog-layout {
+    grid-template-columns: 280px 1fr;
+  }
+}
+
+.filters-panel {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  padding: 22px;
+  box-shadow: var(--shadow-sm);
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.filters-panel h3 {
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.filter-group label.group-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--color-text-soft);
+}
+
+.checkbox-row input {
+  accent-color: var(--color-blue);
+  width: 16px;
+  height: 16px;
+}
+
+.catalog-results-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.results-count {
+  font-size: 14px;
+  color: var(--color-text-soft);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--color-text-soft);
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+}
+
+/* ---------- 13. СТРАНИЦА ПРОФИЛЯ ---------- */
+.profile-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 26px;
+  padding: 30px 0 60px;
+}
+
+@media (min-width: 940px) {
+  .profile-layout {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+.profile-main {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.profile-card {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  padding: 26px;
+  box-shadow: var(--shadow-sm);
+}
+
+.profile-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+}
+
+.profile-head-info h1 {
+  font-size: 25px;
+  margin-bottom: 6px;
+}
+
+.profile-head-info .psych-card-spec {
+  font-size: 14.5px;
+}
+
+.profile-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.profile-card h2 {
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+
+.profile-card p {
+  color: var(--color-text-soft);
+  font-size: 14.5px;
+  margin-bottom: 10px;
+}
+
+.approach-list li {
+  padding: 8px 0 8px 22px;
+  position: relative;
+  color: var(--color-text-soft);
+  font-size: 14.5px;
+  border-bottom: 1px solid var(--color-gray-light);
+}
+
+.approach-list li:last-child {
+  border-bottom: none;
+}
+
+.approach-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--color-sage-dark);
+  font-weight: 700;
+}
+
+.profile-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.booking-card {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-md);
+  position: sticky;
+  top: 90px;
+}
+
+.booking-price {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.booking-price span {
+  font-size: 13.5px;
+  color: var(--color-text-soft);
+  font-weight: 500;
+}
+
+.booking-detail-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--color-gray-light);
+  color: var(--color-text-soft);
+}
+
+.booking-detail-row strong {
+  color: var(--color-text);
+}
+
+/* ---------- 14. МОДАЛЬНОЕ ОКНО ЗАПИСИ ---------- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(58, 58, 58, 0.45);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  z-index: 200;
+}
+
+.modal-overlay.is-open {
+  display: flex;
+}
+
+.modal-box {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  max-width: 420px;
+  width: 100%;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  font-size: 20px;
+  color: var(--color-text-soft);
+  line-height: 1;
+}
+
+.modal-box h3 {
+  font-size: 19px;
+  margin-bottom: 16px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.form-field label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text-soft);
+}
+
+.form-field input,
+.form-field textarea,
+.form-field select {
+  padding: 11px 12px;
+  border: 1.5px solid var(--color-gray-light);
+  border-radius: var(--radius-sm);
+  font-size: 14.5px;
+  font-family: inherit;
+}
+
+.form-field input:focus,
+.form-field textarea:focus,
+.form-field select:focus {
+  outline: none;
+  border-color: var(--color-blue);
+}
+
+.form-success {
+  display: none;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.form-success.is-visible {
+  display: block;
+}
+
+.form-success .success-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--color-sage-light);
+  color: var(--color-sage-dark);
+  font-size: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 14px;
+}
+
+/* ---------- 15. БЛОКИ HERO ДЛЯ КАТАЛОГА/ПРОЧЕЕ ---------- */
+.breadcrumbs {
+  font-size: 13.5px;
+  color: var(--color-text-soft);
+  padding-top: 18px;
+}
+
+.breadcrumbs a {
+  color: var(--color-blue-dark);
+}
+
+.section-alt {
+  background: var(--color-white);
+}
+
+/* ---------- 16. УТИЛИТЫ ---------- */
+.text-center {
+  text-align: center;
+}
+
+.mt-24 {
+  margin-top: 24px;
+}
+
+.toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--color-text);
+  color: var(--color-white);
+  padding: 12px 22px;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 300;
+}
+
+.toast.is-visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}

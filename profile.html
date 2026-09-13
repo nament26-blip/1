@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Профиль психолога — Равоншинос</title>
+  <meta name="description" content="Профиль психолога на платформе Равоншинос: квалификация, подходы в работе, стоимость и отзывы клиентов.">
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ===================== ШАПКА ===================== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-mark">Р</span>
+        Равоншинос
+      </a>
+
+      <nav class="main-nav" id="main-nav">
+        <a href="index.html">Главная</a>
+        <a href="catalog.html">Каталог</a>
+        <a href="index.html#how-it-works">Как это работает</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="catalog.html" class="btn btn-secondary btn-sm">Все психологи</a>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Открыть меню" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="breadcrumbs"><a href="index.html">Главная</a> / <a href="catalog.html">Каталог</a> / Профиль психолога</div>
+  </div>
+
+  <!-- ===================== ПРОФИЛЬ (рендерится через JS) ===================== -->
+  <div class="container">
+    <div class="profile-layout" id="profile-container">
+      <!-- Содержимое профиля подставляется из js/script.js
+           на основе параметра ?id= в адресной строке -->
+    </div>
+  </div>
+
+  <!-- ===================== МОДАЛЬНОЕ ОКНО ЗАПИСИ ===================== -->
+  <div class="modal-overlay" id="booking-modal">
+    <div class="modal-box">
+      <button class="modal-close" id="booking-modal-close" aria-label="Закрыть">✕</button>
+
+      <div id="booking-form-wrap">
+        <h3>Запись к психологу <span id="booking-modal-name-target"></span></h3>
+        <form id="booking-form">
+          <div class="form-field">
+            <label for="booking-name">Ваше имя</label>
+            <input type="text" id="booking-name" required placeholder="Имя">
+          </div>
+          <div class="form-field">
+            <label for="booking-phone">Телефон</label>
+            <input type="tel" id="booking-phone" required placeholder="+992 __ ___ __ __">
+          </div>
+          <div class="form-field">
+            <label for="booking-date">Удобная дата и время</label>
+            <input type="datetime-local" id="booking-date" required>
+          </div>
+          <div class="form-field">
+            <label for="booking-comment">Комментарий (необязательно)</label>
+            <textarea id="booking-comment" rows="3" placeholder="Коротко о вашем запросе"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Отправить заявку</button>
+        </form>
+      </div>
+
+      <div class="form-success" id="booking-success">
+        <div class="success-icon">✓</div>
+        <h3>Заявка отправлена!</h3>
+        <p>Психолог свяжется с вами для подтверждения записи в ближайшее время.</p>
+        <button class="btn btn-secondary btn-block mt-24" id="booking-modal-close-2" onclick="document.getElementById('booking-modal').classList.remove('is-open')">Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== ФУТЕР ===================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-about">
+          <a href="index.html" class="logo">
+            <span class="logo-mark">Р</span>
+            Равоншинос
+          </a>
+          <p>Маркетплейс психологов, где легко найти специалиста, которому можно доверять.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Навигация</h4>
+          <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="catalog.html">Каталог психологов</a></li>
+            <li><a href="index.html#how-it-works">Как это работает</a></li>
+            <li><a href="index.html#cta-psych">Для психологов</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Контакты</h4>
+          <ul>
+            <li><a href="mailto:info@ravonshinos.tj">info@ravonshinos.tj</a></li>
+            <li><a href="tel:+992000000000">+992 00 000 00 00</a></li>
+            <li>Душанбе, Таджикистан</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© <span id="current-year">2026</span> Равоншинос. Все права защищены.</span>
+        <span>Демо-сайт, создан для примера верстки.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
